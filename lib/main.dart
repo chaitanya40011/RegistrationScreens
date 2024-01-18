@@ -1,4 +1,5 @@
 
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -8,72 +9,87 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: MyHomePage(),
+      home: CheckBox(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class CheckBox extends StatefulWidget {
+
+  const CheckBox({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => MyHomePageState();
+  State<CheckBox> createState() => _MyFormState();
 }
 
-class MyHomePageState extends State<MyHomePage> {
-  final controller = StreamController<Color>();
+class _MyFormState extends State<CheckBox> {
+
+  final StreamController<bool> _checkBoxController = StreamController();
+  Stream<bool> get _checkBoxStream => _checkBoxController.stream;
+
+  @override
+  void dispose() {
+    _checkBoxController.close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Stream Builder'),
+        title: const Text("Checkbox with stream builder"),
       ),
-      body: StreamBuilder<Color>(
-        stream: controller.stream,
-        initialData: Colors.blue,
-        builder: (context, snapshot) {
-          return Container(
-            color: snapshot.data,
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  ElevatedButton(
-                    onPressed: () {
-                      controller.sink.add(Colors.white);
-                    },
-                    child: const Text('Customer'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      controller.sink.add(Colors.red);
-                    },
-                    child: const Text('Agent'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      controller.sink.add(Colors.green);
-                    },
-                    child: const Text('Merchant'),
-                  ),
-                ],
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child:  Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+
+            const TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: "Name",
               ),
             ),
-          );
-        },
+            const SizedBox(height: 10,),
+            const TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: "Phone",
+              ),
+            ),
+            const SizedBox(height: 10,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Text("Accept"),
+                StreamBuilder(
+                    stream: _checkBoxStream,
+                    initialData: false,
+                    builder: (BuildContext context, AsyncSnapshot<bool> snapshot ){
+                      return Checkbox(
+                          value: snapshot.data,
+                          onChanged: (changedValue){
+                            _checkBoxController.sink.add(changedValue!);
+                          }
+                      );
+                    }),
+              ],
+            ),
+            const SizedBox(height: 10,),
+            ElevatedButton(onPressed: (){},
+                child: const Text("Submit"))
+          ],
+        ),
       ),
     );
   }
-
-  @override
-  void dispose() {
-    controller.close();
-    super.dispose();
-  }
 }
+
+
