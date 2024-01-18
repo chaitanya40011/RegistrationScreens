@@ -55,7 +55,7 @@ class NumberScreenState extends State<NumberScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 30.0),
+            const SizedBox(height: 30.0),
             Container(
               width: 260, // Set your desired width
               child: TextField(
@@ -70,7 +70,7 @@ class NumberScreenState extends State<NumberScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Container(
               width: 260,
               height: 50,
