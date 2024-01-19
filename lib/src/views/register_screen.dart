@@ -39,18 +39,18 @@ class RegisterScreenState extends State<RegisterScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('PIN',
+                  const Text('PIN',
                       style: TextStyle(
                           fontSize: 30.0,
                           fontFamily: 'Lato',
                           color: Colors.blueGrey)),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   const Text("Enter Personal Details",
                       style: TextStyle(
                           fontSize: 20,
                           fontStyle: FontStyle.italic,
                           color: Colors.blueGrey)),
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   Container(
                     width: 260,
                     height: 50,
@@ -66,7 +66,7 @@ class RegisterScreenState extends State<RegisterScreen> {
                         labelText: "Name",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(color: Colors.blueGrey),
+                          borderSide: const BorderSide(color: Colors.blueGrey),
                         ),
                       ),
                     ),
@@ -91,12 +91,12 @@ class RegisterScreenState extends State<RegisterScreen> {
                         labelText: "Email",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(color: Colors.blueGrey),
+                          borderSide: const BorderSide(color: Colors.blueGrey),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
@@ -117,12 +117,12 @@ class RegisterScreenState extends State<RegisterScreen> {
                         labelText: "PIN",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(color: Colors.blueGrey),
+                          borderSide: const BorderSide(color: Colors.blueGrey),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
@@ -143,12 +143,12 @@ class RegisterScreenState extends State<RegisterScreen> {
                         labelText: "Confirm PIN",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
-                          borderSide: BorderSide(color: Colors.blueGrey),
+                          borderSide: const BorderSide(color: Colors.blueGrey),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(height: 30.0),
+                  const SizedBox(height: 30.0),
                   Align(
                     alignment: Alignment.center,
                     child: Container(
