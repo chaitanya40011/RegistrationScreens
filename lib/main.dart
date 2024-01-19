@@ -28,7 +28,7 @@ class _FutureBuilderScreenState extends State<FutureBuilderScreen> {
   String img = '';
 
   Future<String> fetchData() async {
-    // Simulate a delay of 2 seconds (replace this with your actual async call)
+
     await Future.delayed(const Duration(seconds: 2));
     img = 'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg';
     return img;
